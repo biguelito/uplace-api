@@ -13,7 +13,7 @@ namespace CRUDApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    var url = Environment.GetEnvironmentVariable("WB_URL") ?? "http://localhost:5000";
+                    var url = Environment.GetEnvironmentVariable("API_COMMON") ?? "http://localhost:5000";
                     webBuilder
                     .UseUrls(url)
                     .UseStartup<Startup>();

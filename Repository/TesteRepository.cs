@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UplaceApi.Models;
-using MySqlConnector;
 
 namespace UplaceApi.Repository
 {
@@ -17,21 +16,21 @@ namespace UplaceApi.Repository
         {
             List<Teste> testes = [];
             
-            using(MySqlConnection connection = new MySqlConnection(_connectionString))
-            {
-                connection.Open();
+            // using(MySqlConnection connection = new MySqlConnection(_connectionString))
+            // {
+            //     connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select * from testes", connection);
-                MySqlDataReader reader = await Task.Run(() =>cmd.ExecuteReader());
+            //     MySqlCommand cmd = new MySqlCommand("select * from testes", connection);
+            //     MySqlDataReader reader = await Task.Run(() =>cmd.ExecuteReader());
 
-                while (reader.Read())
-                {
-                    var teste = new Teste(Convert.ToInt32(reader["Id"]), reader["Descricao"].ToString());
-                    testes.Add(teste);
-                }
+            //     while (reader.Read())
+            //     {
+            //         var teste = new Teste(Convert.ToInt32(reader["Id"]), reader["Descricao"].ToString());
+            //         testes.Add(teste);
+            //     }
 
-                connection.Close();
-            }
+            //     connection.Close();
+            // }
 
             return testes;
         }
